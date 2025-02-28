@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  servidor1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "10001:10001"
+    networks:
+      - chat_network
+    depends_on:
+      - broker
+    command: tail -f /dev/null  # Isso mantém o container em execução, e você pode ver os logs
+
+  servidor2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "10002:10002"
+    networks:
+      - chat_network
+    depends_on:
+      - broker
+    command: tail -f /dev/null  # Isso mantém o container em execução, e você pode ver os logs
+
+  broker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    networks:
+      - chat_network
+    command: tail -f /dev/null  # Isso mantém o container em execução, e você pode ver os logs
+
+
+networks:
+  chat_network:
+    driver: bridge
