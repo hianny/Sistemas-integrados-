@@ -10,10 +10,17 @@ O docker foi usado para fazer a virtualização dos serviços, mas as portas e o
 
 usei os seguintes comandos:
 
---poetry new techshop # é os caminhos do jeito que o petry usa
---pyenv local 3.12 # usa essa vrsao do python dentro da pasta que foi dado o comando 
---poetry env use 3.12  #tem que colocar a versao do python  no pyprojet.toml
---poetry shell na pasta techshop/techshop/ 3inicia o ambiente virtual
+--"poetry new techshop" # é os caminhos do jeito que o petry usa
+
+--"pyenv local 3.12" # usa essa vrsao do python dentro da pasta que foi dado o comando 
+
+--"poetry env use 3.12"  #tem que colocar a versao do python  no pyprojet.toml
+
+--"poetry shell na pasta techshop/techshop/" #inicia o ambiente virtual
+
 ****NESSA PARTE AQUI VC JA PRECISA TER O DOCKER INSTALADO NA SUA MAQUINA****
---docker-compose up --build # da esse comando na mesma pasta que o dockerfile e o docker-compose.yml estao, eles que vao criar os containers
-- -ai vc ja pode dar um python ./conexaoCliente/Cliente.py # abre outros terminais e da esse comando, ai vc ja vai conseguir ver que os todos os terminais vao ficar tipo um chat
+
+--"docker-compose up --build" # da esse comando na mesma pasta que o dockerfile e o docker-compose.yml estao, eles que vao criar os containers
+
+--ai vc ja pode dar um comando em outro shell "python ./conexaoCliente/Cliente.py" # abre outros terminais e da esse comando, ai vc ja vai conseguir ver que os todos os terminais vao ficar tipo um chat
+
