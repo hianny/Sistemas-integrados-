@@ -1,12 +1,10 @@
 import threading
 import socket 
-
 def main():
     client =  socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 
     try:
-        client.connect(("broker", 4000))  # Usando o nome do serviço do broker
-
+        client.connect(("localhost",4000))
     except:
         return print('nao foi possivel conectar ao servidor')
     
@@ -22,7 +20,7 @@ def recebeMensagem(client):
     while True:
         try:
             mensagem = client.recv(2048).decode('utf-8')
-            print(fr"{mensagem} \n")
+            print(fr"{mensagem}")
         except:
             print("nao foi possivel permanecer conectado no servidor")
             print("pressione <enter> para continuar!")
