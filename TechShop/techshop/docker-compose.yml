@@ -11,7 +11,7 @@ services:
       - chat_network
     depends_on:
       - broker
-    command: tail -f /dev/null  # Isso mantém o container em execução, e você pode ver os logs
+    command: python /app/Servidor1.py  # Roda diretamente o código do servidor
 
   servidor2:
     build:
@@ -23,7 +23,7 @@ services:
       - chat_network
     depends_on:
       - broker
-    command: tail -f /dev/null  # Isso mantém o container em execução, e você pode ver os logs
+    command: python /app/Servidor2.py  # Roda diretamente o código do servidor
 
   broker:
     build:
@@ -33,8 +33,7 @@ services:
       - "4000:4000"
     networks:
       - chat_network
-    command: tail -f /dev/null  # Isso mantém o container em execução, e você pode ver os logs
-
+    command: python /app/Broker.py  # Roda diretamente o código do broker
 
 networks:
   chat_network:

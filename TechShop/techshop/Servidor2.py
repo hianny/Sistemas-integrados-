@@ -5,7 +5,7 @@ def main():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind(("0.0.0.0", 10002))  # Porta do servidor
     server.listen()
-    print("Servidor1 rodando na porta 10001...")
+    print("Servidor1 rodando na porta 10002...")
 
     # Conecta-se ao broker
     broker = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

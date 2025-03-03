@@ -3,6 +3,7 @@ import socket
 
 # Lista para armazenar os clientes conectados
 clients = []
+servers = []
 
 def main():
     broker = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -38,7 +39,20 @@ def tratamentoMensagens(client):
             client.close()
             break
 
+
+def conectar_servidores():
+    servidores = [("localhost", 10001), ("localhost", 10002)]
+    for srv in servidores:
+        try:
+            server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            server_socket.connect(srv)
+            servers.append(server_socket)
+            print(f"Conectado ao servidor {srv[0]}:{srv[1]}")
+        except:
+            print(f"Não foi possível conectar ao servidor {srv[0]}:{srv[1]}")
+
 def broadcast(msg, client):
+    # Envia para os outros clientes
     for other_client in clients:
         if other_client != client:
             try:
@@ -47,5 +61,16 @@ def broadcast(msg, client):
                 clients.remove(other_client)
                 other_client.close()
 
+    # Envia para os servidores
+    for server in servers:
+        try:
+            server.send(msg)
+        except:
+            print("Erro na comunicação com o servidor.")
+            servers.remove(server)
+            server.close()
+
+
 if __name__ == "__main__":
+    conectar_servidores()
     main()
