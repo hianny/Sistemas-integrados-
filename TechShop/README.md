@@ -22,5 +22,7 @@ usei os seguintes comandos:
 
 --"docker-compose up --build" # da esse comando na mesma pasta que o dockerfile e o docker-compose.yml estao, eles que vao criar os containers
 
+--"docker-compose up --remove-orphans --force-recreate" #  esse comando esse comando elimina os containers dps que eles param
+
 --ai vc ja pode dar um comando em outro shell "python ./conexaoCliente/Cliente.py" # abre outros terminais e da esse comando, ai vc ja vai conseguir ver que os todos os terminais vao ficar tipo um chat
 
